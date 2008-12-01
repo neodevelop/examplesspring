@@ -1,0 +1,12 @@
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://directwebremoting.org/schema/dwr20.dtd">
+
+<dwr>
+	<allow>
+		<create javascript="TwitterService" creator="spring">
+		 <param name="beanName" value="twitterService"/>
+		</create>
+		<convert match="twitter4j.*" converter="bean"></convert>
+	</allow>
+</dwr>
