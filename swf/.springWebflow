@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webflow-project-description>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.3.2.201003220227-RELEASE]]></pluginVersion>
+	<configs>
+		<config>
+			<file>src/main/webapp/WEB-INF/flujo/nuevo-flow.xml</file>
+			<name><![CDATA[nuevo-flow]]></name>
+		</config>
+	</configs>
+</webflow-project-description>

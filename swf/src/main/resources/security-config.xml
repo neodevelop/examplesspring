@@ -1,0 +1,40 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+           
+	<http auto-config='true'>
+		<intercept-url pattern="/login.jsp*" filters="none" />
+		<intercept-url pattern="/seguro/**" access="ROLE_USER" />
+		<intercept-url pattern="/super/seguro/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/**" access="ROLE_USER" />
+		<logout logout-url="/logout.html"/>
+	</http>
+
+	<!--authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="neodevelop" password="elmismo" authorities="ROLE_USER, ROLE_ADMIN" />
+				<user name="domix" password="contraseña" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager-->
+	
+	<!-- Despues agregamos algo de cifrado... -->
+	<authentication-manager>
+		<authentication-provider>
+		<password-encoder hash="sha"/>
+			<user-service>
+				<user name="neodevelop" 
+				password="388506c128cb9a841199f4dd574f4e586206fa93" 
+				authorities="ROLE_USER, ROLE_ADMIN" />
+				<user name="domix" 
+				password="388506c128cb9a841199f4dd574f4e586206fa93" 
+				authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+	
+</beans:beans>

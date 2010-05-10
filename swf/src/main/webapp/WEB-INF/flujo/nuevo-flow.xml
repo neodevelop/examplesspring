@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<secured attributes="ROLE_ADMIN"/>
+
+	<var name="reunion" class="com.synergyj.model.Reunion"/>
+	<var name="invitado" class="com.synergyj.model.Invitado"/>
+
+	<view-state id="inicio" model="reunion">
+		<transition on="evaluaReunion" to="evaluaReunion"/>
+		<transition on="creaLista" to="creaLista"/>
+	</view-state>
+
+	<action-state id="evaluaReunion">
+		<evaluate expression="reunionService.doAccion(reunion)"/>
+		<transition to="detalleReunion"/>
+	</action-state>
+	
+	<view-state id="detalleReunion">
+		<transition on="inicio" to="inicio"/>
+		<transition on="creaReunion" to="creaReunion">
+			<evaluate expression="reunionService.creaReunion(reunion,invitadoService.getInvitados())"/>
+		</transition>
+	</view-state>
+	
+	<view-state id="creaLista" model="invitado">
+		
+		<transition on="agrega" to="agrega"/>
+		<transition on="inicio" to="inicio"/>
+	</view-state>
+	
+	<action-state id="agrega">
+		<evaluate expression="invitadoService.agregaInvitado(invitado)" result="invitado"/>
+		<transition to="creaLista"/>
+	</action-state>
+
+	<end-state id="creaReunion" view="creaReunion.jsp" />
+	
+</flow>
