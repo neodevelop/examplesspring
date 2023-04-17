@@ -8,7 +8,7 @@
 	<name>swf Maven Webapp</name>
 	<url>http://synergyj,com</url>
 	<properties>
-		<org.springframework.version>6.0.7</org.springframework.version>
+		<org.springframework.version>6.0.8</org.springframework.version>
 		<org.springframework.webflow.version>2.1.0.M1</org.springframework.webflow.version>
 		<org.springframework.security.version>5.3.10.RELEASE</org.springframework.security.version>
 	</properties>
